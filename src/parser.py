@@ -1,21 +1,23 @@
 """Parses Iditarod log HTML into structured musher data.
 
-The standings table uses checkpoint names as GROUP HEADER rows (not per-row columns).
-Each checkpoint group has a spanning header like "Nikolai", followed by musher rows.
-
-Data row column layout (0-indexed, NO checkpoint column):
+Actual data row layout (confirmed from HTML):
   0  Pos
-  1  Musher
+  1  Musher (link)
   2  Bib
-  3  In > Time
-  4  In > Dogs
-  5  Out > Time
-  6  Out > Dogs
-  7  Rest In Chkpt
-  8  Time Enroute
-  9  Previous
+  3  Checkpoint (link)
+  4  In > Time
+  5  In > Dogs
+  6  Out > Time       (empty if musher is still at checkpoint)
+  7  Out > Dogs       (empty if musher is still at checkpoint)
+  8  Rest In Chkpt    (empty if still at checkpoint)
+  9  Time Enroute
+  10 Previous checkpoint
+  11 Previous time
+  12 Speed
+  ...
 
-Empty Out Time/Dogs = musher is currently resting at the checkpoint.
+At checkpoint = Out Time and Out Dogs are empty strings.
+Dropped dogs = In Dogs - Out Dogs.
 """
 
 import re
@@ -39,38 +41,6 @@ def _is_empty(value: str) -> bool:
     return not value or value.strip() in ("", "-", "—", "–")
 
 
-def _looks_like_timestamp(value: str) -> bool:
-    """Detect if a string is a date/time rather than a checkpoint name."""
-    return bool(re.match(r"\d+/\d+", value.strip()))
-
-
-def _is_checkpoint_header(tr) -> str | None:
-    """
-    Returns the checkpoint name if this row is a group header, else None.
-    Group headers are rows with a single colspan cell (or one meaningful cell)
-    that contains a checkpoint name (not a timestamp, not a number).
-    """
-    cells = tr.find_all(["td", "th"])
-    if not cells:
-        return None
-
-    # Single cell spanning multiple columns
-    if len(cells) == 1:
-        text = cells[0].get_text(strip=True)
-        colspan = int(cells[0].get("colspan", 1))
-        if colspan > 2 and text and not _looks_like_timestamp(text):
-            return text
-
-    # Row where only the first cell has content and rest are empty — also a header
-    non_empty = [c.get_text(strip=True) for c in cells if c.get_text(strip=True)]
-    if len(non_empty) == 1:
-        text = non_empty[0]
-        if not _looks_like_timestamp(text) and not text.isdigit():
-            return text
-
-    return None
-
-
 def parse_log(html: str) -> dict:
     """
     Parse a log page and return:
@@ -83,7 +53,7 @@ def parse_log(html: str) -> dict:
             "name": str,
             "rookie": bool,
             "bib": str,
-            "checkpoint": str,    # from group header row
+            "checkpoint": str,
             "in_time": str,
             "in_dogs": int | None,
             "out_time": str,
@@ -125,91 +95,47 @@ def parse_log(html: str) -> dict:
     if not table:
         return {"log_label": log_label, "timestamp": timestamp, "mushers": []}
 
-    # -- Build column map from headers --
-    # Default layout assumes no "Checkpoint" column in data rows:
+    # Column indices — confirmed from actual HTML inspection.
+    # Checkpoint is a per-row <td> (link), not a group header.
     col = {
         "pos": 0,
         "musher": 1,
         "bib": 2,
-        "in_time": 3,
-        "in_dogs": 4,
-        "out_time": 5,
-        "out_dogs": 6,
-        "rest": 7,
-        "enroute": 8,
-        "previous": 9,
+        "checkpoint": 3,
+        "in_time": 4,
+        "in_dogs": 5,
+        "out_time": 6,
+        "out_dogs": 7,
+        "rest": 8,
+        "enroute": 9,
+        "previous": 10,
     }
 
+    # -- Parse rows --
+    # Skip the first 1-2 header rows (contain <th> and "Musher"/"In"/"Out" etc.)
     all_rows = table.find_all("tr")
+    header_rows = set()
+    for tr in all_rows:
+        if tr.find("th"):
+            header_rows.add(tr)
+            if len(header_rows) == 2:
+                break  # only skip the first two header rows
 
-    # Find header rows (contain <th> elements)
-    header_rows = [tr for tr in all_rows if tr.find("th")]
-
-    def expand_headers(tr) -> list[str]:
-        result = []
-        for th in tr.find_all(["th", "td"]):
-            text = th.get_text(strip=True)
-            colspan = int(th.get("colspan", 1))
-            result.extend([text] * colspan)
-        return result
-
-    if len(header_rows) >= 2:
-        sections = expand_headers(header_rows[0])
-        details = expand_headers(header_rows[1])
-
-        while len(details) < len(sections):
-            details.append("")
-
-        for i, (sec, det) in enumerate(zip(sections, details)):
-            sec_l = sec.lower().replace(" ", "")
-            det_l = det.lower().replace(" ", "")
-
-            if sec_l == "pos" or det_l == "pos":
-                col["pos"] = i
-            elif sec_l == "musher" or det_l == "musher":
-                col["musher"] = i
-            elif sec_l == "bib" or det_l == "bib":
-                col["bib"] = i
-            elif sec_l == "in" and det_l == "time":
-                col["in_time"] = i
-            elif sec_l == "in" and det_l == "dogs":
-                col["in_dogs"] = i
-            elif sec_l == "out" and det_l == "time":
-                col["out_time"] = i
-            elif sec_l == "out" and det_l == "dogs":
-                col["out_dogs"] = i
-            elif "rest" in sec_l or "rest" in det_l:
-                col["rest"] = i
-            elif "enroute" in sec_l or "enroute" in det_l:
-                col["enroute"] = i
-            elif "previous" in sec_l or "previous" in det_l:
-                col["previous"] = i
-
-    # -- Parse all rows, tracking checkpoint group headers --
     mushers = []
-    current_checkpoint = ""
 
     for tr in all_rows:
-        # Skip header rows
         if tr in header_rows:
             continue
 
-        # Check if this is a checkpoint group header
-        chk = _is_checkpoint_header(tr)
-        if chk:
-            current_checkpoint = chk
-            continue
-
-        # Data row
         cells = tr.find_all(["td", "th"])
-        if len(cells) < 5:
+        if len(cells) < 6:
             continue
 
         pos_text = _cell(cells, col["pos"])
         try:
             pos = int(pos_text)
         except ValueError:
-            continue
+            continue  # skip non-data rows
 
         name_cell = cells[col["musher"]] if col["musher"] < len(cells) else None
         name = name_cell.get_text(strip=True) if name_cell else ""
@@ -233,7 +159,7 @@ def parse_log(html: str) -> dict:
             "name": clean_name,
             "rookie": is_rookie,
             "bib": _cell(cells, col["bib"]),
-            "checkpoint": current_checkpoint,
+            "checkpoint": _cell(cells, col["checkpoint"]),
             "in_time": _cell(cells, col["in_time"]),
             "in_dogs": in_dogs,
             "out_time": out_time,
