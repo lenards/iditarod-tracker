@@ -124,6 +124,28 @@ def _build_dog_report_text(state: dict) -> str:
     return text
 
 
+def _build_resting_text(state: dict) -> str:
+    """Mushers currently resting at a checkpoint, sorted by position."""
+    mushers = state.get("mushers", {})
+    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+
+    lines = []
+    for name, data in sorted_mushers:
+        if data.get("at_checkpoint"):
+            pos = data["current_pos"]
+            checkpoint = data["current_checkpoint"]
+            rookie = " (r)" if data.get("rookie") else ""
+            lines.append(f"`{pos:>2}.` **{name}**{rookie} (Bib #{data['bib']}) — {checkpoint}")
+
+    if not lines:
+        return "_No mushers currently resting._"
+
+    text = "\n".join(lines)
+    if len(text) > 1020:
+        text = text[:1020] + "\n…"
+    return text
+
+
 def post_discord(summary: str, issue_url: str, state: dict) -> None:
     """
     Posts three embeds to Discord:
@@ -164,10 +186,16 @@ def post_discord(summary: str, issue_url: str, state: dict) -> None:
         "title": "🐕 Dog Report",
         "description": _build_dog_report_text(state),
         "color": 0x1a6bbd,
+    }
+
+    embed_resting = {
+        "title": "⛺ Resting at Checkpoint",
+        "description": _build_resting_text(state),
+        "color": 0x1a6bbd,
         "footer": {"text": f"Log #{state['last_log']} · iditarod.com"},
     }
 
-    payload = {"embeds": [embed_summary, embed_standings, embed_dogs]}
+    payload = {"embeds": [embed_summary, embed_standings, embed_resting, embed_dogs]}
     resp = requests.post(webhook_url, json=payload, timeout=15)
     resp.raise_for_status()
     print("Discord notification sent.")
