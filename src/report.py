@@ -1,0 +1,145 @@
+"""Builds the structured race report sections from state."""
+
+from .state import total_dropped
+
+
+def build_report(state: dict) -> dict:
+    """
+    Returns a dict with:
+      - standings: list of mushers sorted by position
+      - at_checkpoint: mushers currently resting at a checkpoint
+      - dog_report: per-musher dropped dog history
+      - scratched: any scratched mushers (dogs = 0 or flagged)
+    """
+    mushers = state["mushers"]
+
+    # Sort by current position
+    standings = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+
+    at_checkpoint = [
+        (name, data) for name, data in standings
+        if data.get("at_checkpoint")
+    ]
+
+    # Dog report: only mushers who have dropped at least 1 dog total
+    dog_report = []
+    for name, data in standings:
+        drops = [
+            h for h in data.get("checkpoint_history", []) if h["dropped"] > 0
+        ]
+        if drops:
+            dog_report.append({
+                "name": name,
+                "bib": data["bib"],
+                "rookie": data["rookie"],
+                "total_dropped": total_dropped(data),
+                "drops": drops,
+            })
+
+    return {
+        "standings": standings,
+        "at_checkpoint": at_checkpoint,
+        "dog_report": dog_report,
+    }
+
+
+def format_report_markdown(report: dict, state: dict) -> str:
+    """Formats the report as a markdown string for GitHub issue body."""
+    lines = []
+
+    # -- Standings --
+    lines.append("## 🏁 Current Standings\n")
+    lines.append("| Pos | Musher | Bib | Checkpoint | Status | Dogs Out |")
+    lines.append("|-----|--------|-----|------------|--------|----------|")
+
+    for name, data in report["standings"]:
+        pos = data["current_pos"]
+        bib = data["bib"]
+        checkpoint = data["current_checkpoint"]
+        rookie_tag = " (r)" if data.get("rookie") else ""
+        at = "🛑 resting" if data["at_checkpoint"] else "🏃 en route"
+        out_dogs = ""
+        history = data.get("checkpoint_history", [])
+        if history:
+            last = history[-1]
+            out_dogs = str(last["out_dogs"]) if not data["at_checkpoint"] else str(last.get("in_dogs", ""))
+        lines.append(f"| {pos} | {name}{rookie_tag} | #{bib} | {checkpoint} | {at} | {out_dogs} |")
+
+    lines.append("")
+
+    # -- At Checkpoint --
+    if report["at_checkpoint"]:
+        lines.append("## ⛺ Currently at Checkpoint\n")
+        for name, data in report["at_checkpoint"]:
+            checkpoint = data["current_checkpoint"]
+            history = data.get("checkpoint_history", [])
+            # Find the in_dogs for the current checkpoint
+            in_dogs = "?"
+            # Last history entry might be the previous checkpoint; current checkpoint in-progress
+            # We stored this in current state from the log
+            rookie_tag = " (r)" if data.get("rookie") else ""
+            lines.append(f"- **{name}**{rookie_tag} (#{data['bib']}) — resting at **{checkpoint}**")
+        lines.append("")
+
+    # -- Dog Report --
+    lines.append("## 🐕 Dog Report\n")
+
+    if not report["dog_report"]:
+        lines.append("_No dogs dropped yet._\n")
+    else:
+        for entry in report["dog_report"]:
+            rookie_tag = " (r)" if entry.get("rookie") else ""
+            lines.append(f"**{entry['name']}**{rookie_tag} (#{entry['bib']}) — {entry['total_dropped']} dog(s) dropped total")
+            for drop in entry["drops"]:
+                lines.append(f"  - Dropped **{drop['dropped']}** at {drop['checkpoint']} "
+                             f"(in: {drop['in_dogs']}, out: {drop['out_dogs']})")
+            lines.append("")
+
+    # -- Footer --
+    lines.append(f"\n---\n_Data from log #{state['last_log']}. "
+                 f"Standings reflect most recent log processed._")
+
+    return "\n".join(lines)
+
+
+def format_summary_prompt(report: dict, state: dict) -> str:
+    """
+    Builds the text prompt for Claude to write a narrative summary.
+    Includes key facts about standings, who's resting, and dog drops.
+    """
+    standings = report["standings"]
+    at_chk = report["at_checkpoint"]
+    dog_report = report["dog_report"]
+
+    parts = []
+
+    # Top 5
+    parts.append("TOP 5 STANDINGS:")
+    for name, data in standings[:5]:
+        chk = data["current_checkpoint"]
+        status = "resting" if data["at_checkpoint"] else "en route"
+        parts.append(f"  {data['current_pos']}. {name} — {chk} ({status})")
+
+    # Who's resting
+    if at_chk:
+        parts.append(f"\nMUSHERS CURRENTLY AT CHECKPOINT ({len(at_chk)}):")
+        for name, data in at_chk:
+            parts.append(f"  - {name} at {data['current_checkpoint']}")
+
+    # Total field size
+    total = len(standings)
+    parts.append(f"\nTOTAL ACTIVE MUSHERS: {total}")
+
+    # Dog drops
+    if dog_report:
+        parts.append("\nDOG DROPS:")
+        for entry in dog_report:
+            for drop in entry["drops"]:
+                parts.append(f"  - {entry['name']} dropped {drop['dropped']} dog(s) at {drop['checkpoint']}")
+
+    # Last checkpoint reached by leader
+    if standings:
+        leader_name, leader_data = standings[0]
+        parts.append(f"\nRACE LEADER: {leader_name} at {leader_data['current_checkpoint']}")
+
+    return "\n".join(parts)

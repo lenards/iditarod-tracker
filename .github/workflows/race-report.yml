@@ -1,0 +1,49 @@
+name: Race Report
+
+on:
+  schedule:
+    # All times UTC. Race is in AKDT (UTC-8) during March.
+    - cron: "0 16 * * *"  # 8:00am AKDT
+    - cron: "0 22 * * *"  # 2:00pm AKDT
+    - cron: "0  3 * * *"  # 7:00pm AKDT (next UTC day)
+  workflow_dispatch:       # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write   # to commit state.json back
+  issues: write     # to create race-report issues
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fetch with PAT so we can push state.json back
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tracker
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python main.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "iditarod-bot"
+          git config user.email "iditarod-bot@users.noreply.github.com"
+          git add state.json
+          git diff --staged --quiet && echo "No state changes." || \
+            git commit -m "chore: update race state [skip ci]"
+          git push
