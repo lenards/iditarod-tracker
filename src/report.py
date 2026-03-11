@@ -78,7 +78,7 @@ def format_report_markdown(report: dict, state: dict) -> str:
             # Last history entry might be the previous checkpoint; current checkpoint in-progress
             # We stored this in current state from the log
             rookie_tag = " (r)" if data.get("rookie") else ""
-            lines.append(f"- **{name}**{rookie_tag} (#{data['bib']}) — resting at **{checkpoint}**")
+            lines.append(f"- **{name}**{rookie_tag} (Bib #{data['bib']}) — resting at **{checkpoint}**")
         lines.append("")
 
     # -- Dog Report --
