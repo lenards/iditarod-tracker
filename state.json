@@ -1,5 +1,5 @@
 {
-  "last_log": 105,
+  "last_log": 137,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -46,9 +46,9 @@
     "Paige Drobny": {
       "bib": "10",
       "rookie": false,
-      "current_pos": 3,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 5,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -97,15 +97,23 @@
           "out_time": "3/10 15:36:00",
           "out_dogs": 14,
           "dropped": 1
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 21:27:00",
+          "in_dogs": 14,
+          "out_time": "3/10 21:27:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Travis Beals": {
       "bib": "4",
       "rookie": false,
-      "current_pos": 9,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 8,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -154,15 +162,23 @@
           "out_time": "3/10 16:40:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 22:25:00",
+          "in_dogs": 15,
+          "out_time": "3/10 22:33:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
     "Bailey Vitello": {
       "bib": "9",
       "rookie": false,
-      "current_pos": 4,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 13,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -211,14 +227,22 @@
           "out_time": "3/10 15:46:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 01:36:00",
+          "in_dogs": 16,
+          "out_time": "3/11 01:45:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Lauro Eklund": {
       "bib": "17",
       "rookie": false,
-      "current_pos": 14,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 3,
+      "current_checkpoint": "Takotna",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -268,14 +292,30 @@
           "out_time": "3/10 18:30:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 00:30:00",
+          "in_dogs": 16,
+          "out_time": "3/11 04:48:00",
+          "out_dogs": 15,
+          "dropped": 1
+        },
+        {
+          "checkpoint": "Takotna",
+          "in_time": "3/11 06:55:00",
+          "in_dogs": 15,
+          "out_time": "3/11 07:08:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
     "Joseph Sabin": {
       "bib": "11",
       "rookie": true,
-      "current_pos": 28,
-      "current_checkpoint": "Rohn",
+      "current_pos": 29,
+      "current_checkpoint": "Nikolai",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -317,14 +357,22 @@
           "out_time": "3/10 09:20:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 22:17:00",
+          "in_dogs": 15,
+          "out_time": "3/11 05:40:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
     "Chad Stoddard": {
       "bib": "8",
       "rookie": false,
-      "current_pos": 21,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 23,
+      "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -366,15 +414,23 @@
           "out_time": "3/10 04:43:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:51:00",
+          "in_dogs": 16,
+          "out_time": "3/10 22:21:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Mille Porsild": {
       "bib": "15",
       "rookie": false,
-      "current_pos": 5,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 7,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -423,15 +479,23 @@
           "out_time": "3/10 15:51:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 21:41:00",
+          "in_dogs": 16,
+          "out_time": "3/10 21:47:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Riley Dyche": {
       "bib": "19",
       "rookie": false,
-      "current_pos": 2,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 1,
+      "current_checkpoint": "Ophir",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -480,15 +544,31 @@
           "out_time": "3/10 12:23:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 23:28:00",
+          "in_dogs": 16,
+          "out_time": "3/10 23:34:00",
+          "out_dogs": 16,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Takotna",
+          "in_time": "3/11 02:08:00",
+          "in_dogs": 16,
+          "out_time": "3/11 02:09:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Gabe Dunham": {
       "bib": "18",
       "rookie": false,
-      "current_pos": 25,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_pos": 24,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -529,15 +609,23 @@
           "out_time": "3/10 07:23:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 20:04:00",
+          "in_dogs": 15,
+          "out_time": "3/11 01:01:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
     "Michelle Phillips": {
       "bib": "30",
       "rookie": false,
-      "current_pos": 7,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 9,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -586,14 +674,22 @@
           "out_time": "3/10 16:29:00",
           "out_dogs": 14,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 22:32:00",
+          "in_dogs": 14,
+          "out_time": "3/10 22:47:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Matt Hall": {
       "bib": "16",
       "rookie": false,
-      "current_pos": 8,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 2,
+      "current_checkpoint": "Takotna",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -643,15 +739,31 @@
           "out_time": "3/10 16:34:00",
           "out_dogs": 14,
           "dropped": 2
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 23:10:00",
+          "in_dogs": 14,
+          "out_time": "3/11 02:22:00",
+          "out_dogs": 14,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Takotna",
+          "in_time": "3/11 04:58:00",
+          "in_dogs": 14,
+          "out_time": "3/11 05:02:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Sam Martin": {
       "bib": "24",
       "rookie": true,
-      "current_pos": 19,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": true,
+      "current_pos": 18,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -692,14 +804,30 @@
           "out_time": "3/10 02:36:00",
           "out_dogs": 15,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:31:00",
+          "in_dogs": 15,
+          "out_time": "3/10 22:18:00",
+          "out_dogs": 14,
+          "dropped": 1
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 05:06:00",
+          "in_dogs": 14,
+          "out_time": "3/11 05:29:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Jason Mackey": {
       "bib": "22",
       "rookie": false,
-      "current_pos": 26,
-      "current_checkpoint": "Rohn",
+      "current_pos": 28,
+      "current_checkpoint": "Nikolai",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -741,14 +869,22 @@
           "out_time": "3/10 07:24:00",
           "out_dogs": 15,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 22:05:00",
+          "in_dogs": 15,
+          "out_time": "3/11 04:27:00",
+          "out_dogs": 14,
+          "dropped": 1
         }
       ]
     },
     "Keaton Loebrich": {
       "bib": "12",
       "rookie": false,
-      "current_pos": 22,
-      "current_checkpoint": "Rohn",
+      "current_pos": 25,
+      "current_checkpoint": "Nikolai",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -790,15 +926,23 @@
           "out_time": "3/10 01:50:00",
           "out_dogs": 15,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 18:09:00",
+          "in_dogs": 15,
+          "out_time": "3/11 00:59:00",
+          "out_dogs": 14,
+          "dropped": 1
         }
       ]
     },
     "Kevin Hansen": {
       "bib": "34",
       "rookie": true,
-      "current_pos": 18,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": true,
+      "current_pos": 17,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -839,14 +983,30 @@
           "out_time": "3/10 02:52:00",
           "out_dogs": 14,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:17:00",
+          "in_dogs": 14,
+          "out_time": "3/10 22:44:00",
+          "out_dogs": 13,
+          "dropped": 1
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 05:11:00",
+          "in_dogs": 13,
+          "out_time": "3/11 05:16:00",
+          "out_dogs": 13,
+          "dropped": 0
         }
       ]
     },
     "Josi (Thyr) Shelley": {
       "bib": "27",
       "rookie": false,
-      "current_pos": 16,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 21,
+      "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -888,15 +1048,23 @@
           "out_time": "3/9 23:49:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 14:19:00",
+          "in_dogs": 15,
+          "out_time": "3/10 19:59:00",
+          "out_dogs": 13,
+          "dropped": 2
         }
       ]
     },
     "Peter Kaiser": {
       "bib": "33",
       "rookie": false,
-      "current_pos": 10,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 11,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -945,14 +1113,22 @@
           "out_time": "3/10 17:37:00",
           "out_dogs": 13,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 23:38:00",
+          "in_dogs": 13,
+          "out_time": "3/10 23:45:00",
+          "out_dogs": 13,
+          "dropped": 0
         }
       ]
     },
     "Jesse Terry": {
       "bib": "29",
       "rookie": true,
-      "current_pos": 20,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 22,
+      "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -994,15 +1170,23 @@
           "out_time": "3/10 02:14:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:37:00",
+          "in_dogs": 16,
+          "out_time": "3/10 22:44:00",
+          "out_dogs": 15,
+          "dropped": 1
         }
       ]
     },
     "Jody Potts-Joseph": {
       "bib": "32",
       "rookie": true,
-      "current_pos": 33,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_pos": 32,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1050,7 +1234,7 @@
       "bib": "36",
       "rookie": true,
       "current_pos": 27,
-      "current_checkpoint": "Rohn",
+      "current_checkpoint": "Nikolai",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1092,6 +1276,14 @@
           "out_time": "3/10 07:24:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 21:28:00",
+          "in_dogs": 16,
+          "out_time": "3/11 04:14:00",
+          "out_dogs": 14,
+          "dropped": 2
         }
       ]
     },
@@ -1099,8 +1291,8 @@
       "bib": "26",
       "rookie": false,
       "current_pos": 12,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1147,17 +1339,25 @@
           "in_time": "3/10 13:35:00",
           "in_dogs": 16,
           "out_time": "3/10 18:10:00",
-          "out_dogs": 16,
-          "dropped": 0
+          "out_dogs": 14,
+          "dropped": 2
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 00:40:00",
+          "in_dogs": 14,
+          "out_time": "3/11 00:45:00",
+          "out_dogs": 13,
+          "dropped": 1
         }
       ]
     },
     "Sam Paperman": {
       "bib": "25",
       "rookie": true,
-      "current_pos": 31,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_pos": 33,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1205,8 +1405,8 @@
       "bib": "31",
       "rookie": true,
       "current_pos": 34,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1253,9 +1453,9 @@
     "Jeff Deeter": {
       "bib": "35",
       "rookie": false,
-      "current_pos": 24,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_pos": 20,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1296,15 +1496,23 @@
           "out_time": "3/10 05:01:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 18:56:00",
+          "in_dogs": 16,
+          "out_time": "3/10 19:04:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Adam Lindenmuth": {
       "bib": "2",
       "rookie": true,
-      "current_pos": 32,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_pos": 31,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1351,8 +1559,8 @@
     "Sydnie Bahl": {
       "bib": "20",
       "rookie": true,
-      "current_pos": 29,
-      "current_checkpoint": "Rohn",
+      "current_pos": 26,
+      "current_checkpoint": "Nikolai",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1394,14 +1602,22 @@
           "out_time": "3/10 09:45:00",
           "out_dogs": 14,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 21:57:00",
+          "in_dogs": 14,
+          "out_time": "3/11 04:01:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Hanna Lyrek": {
       "bib": "23",
       "rookie": false,
-      "current_pos": 17,
-      "current_checkpoint": "Nikolai",
+      "current_pos": 14,
+      "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -1443,6 +1659,22 @@
           "out_time": "3/10 02:13:00",
           "out_dogs": 14,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 16:47:00",
+          "in_dogs": 14,
+          "out_time": "3/10 22:06:00",
+          "out_dogs": 14,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 04:18:00",
+          "in_dogs": 14,
+          "out_time": "3/11 04:25:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
@@ -1450,8 +1682,8 @@
       "bib": "21",
       "rookie": true,
       "current_pos": 30,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1532,8 +1764,8 @@
       "bib": "37",
       "rookie": false,
       "current_pos": 35,
-      "current_checkpoint": "Rohn",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nikolai",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1580,9 +1812,9 @@
     "Rohn Buser": {
       "bib": "3",
       "rookie": false,
-      "current_pos": 13,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 19,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1638,8 +1870,8 @@
       "bib": "5",
       "rookie": false,
       "current_pos": 6,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1688,15 +1920,23 @@
           "out_time": "3/10 15:54:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 21:35:00",
+          "in_dogs": 16,
+          "out_time": "3/10 21:35:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Jessie Holmes": {
       "bib": "7",
       "rookie": false,
-      "current_pos": 1,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 4,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1745,15 +1985,23 @@
           "out_time": "3/10 10:57:00",
           "out_dogs": 16,
           "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 20:03:00",
+          "in_dogs": 16,
+          "out_time": "3/10 20:11:00",
+          "out_dogs": 16,
+          "dropped": 0
         }
       ]
     },
     "Jessie Royer": {
       "bib": "14",
       "rookie": false,
-      "current_pos": 11,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 10,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1802,14 +2050,22 @@
           "out_time": "3/10 18:02:00",
           "out_dogs": 15,
           "dropped": 1
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/10 23:42:00",
+          "in_dogs": 15,
+          "out_time": "3/10 23:47:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
     "Thomas Waerner": {
       "bib": "13",
       "rookie": false,
-      "current_pos": 23,
-      "current_checkpoint": "Rohn",
+      "current_pos": 17,
+      "current_checkpoint": "McGrath",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1851,14 +2107,30 @@
           "out_time": "3/10 02:00:00",
           "out_dogs": 12,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:47:00",
+          "in_dogs": 12,
+          "out_time": "3/10 17:48:00",
+          "out_dogs": 12,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 00:53:00",
+          "in_dogs": 12,
+          "out_time": "3/11 05:14:00",
+          "out_dogs": 12,
+          "dropped": 0
         }
       ]
     },
     "Kjell Rokke": {
       "bib": "6",
       "rookie": true,
-      "current_pos": 24,
-      "current_checkpoint": "Rohn",
+      "current_pos": 16,
+      "current_checkpoint": "McGrath",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1898,6 +2170,22 @@
           "in_time": "3/10 01:57:00",
           "in_dogs": 12,
           "out_time": "3/10 02:00:00",
+          "out_dogs": 12,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Nikolai",
+          "in_time": "3/10 17:47:00",
+          "in_dogs": 12,
+          "out_time": "3/10 17:48:00",
+          "out_dogs": 12,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "McGrath",
+          "in_time": "3/11 00:53:00",
+          "in_dogs": 12,
+          "out_time": "3/11 05:14:00",
           "out_dogs": 12,
           "dropped": 0
         }
