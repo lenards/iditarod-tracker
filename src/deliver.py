@@ -75,10 +75,55 @@ def build_full_body(summary: str, report_md: str) -> str:
     return f"## Race Summary\n\n{summary}\n\n---\n\n{report_md}"
 
 
+def _build_standings_text(state: dict, max_mushers: int = 37) -> str:
+    """Compact standings list for Discord (no markdown tables)."""
+    mushers = state.get("mushers", {})
+    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+
+    lines = []
+    for name, data in sorted_mushers[:max_mushers]:
+        pos = data["current_pos"]
+        checkpoint = data["current_checkpoint"]
+        status = "🛑" if data["at_checkpoint"] else "🏃"
+        rookie = " (r)" if data.get("rookie") else ""
+        lines.append(f"`{pos:>2}.` {status} **{name}**{rookie} — {checkpoint}")
+
+    text = "\n".join(lines)
+    # Discord field value limit is 1024 chars; truncate gracefully
+    if len(text) > 1020:
+        text = text[:1020] + "\n…"
+    return text or "_No standings available._"
+
+
+def _build_dog_report_text(state: dict) -> str:
+    """Compact dog drop summary for Discord."""
+    mushers = state.get("mushers", {})
+    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+
+    lines = []
+    for name, data in sorted_mushers:
+        drops = [h for h in data.get("checkpoint_history", []) if h["dropped"] > 0]
+        if drops:
+            total = sum(h["dropped"] for h in drops)
+            detail = ", ".join(f"{h['dropped']} @ {h['checkpoint']}" for h in drops)
+            rookie = " (r)" if data.get("rookie") else ""
+            lines.append(f"**{name}**{rookie} — {total} dropped ({detail})")
+
+    if not lines:
+        return "_No dogs dropped yet._"
+
+    text = "\n".join(lines)
+    if len(text) > 1020:
+        text = text[:1020] + "\n…"
+    return text
+
+
 def post_discord(summary: str, issue_url: str, state: dict) -> None:
     """
-    Posts a summary embed to Discord via webhook.
-    Keeps it brief — full standings are in the GitHub issue.
+    Posts three embeds to Discord:
+      1. Narrative summary
+      2. Current standings
+      3. Dog report
     """
     webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
     if not webhook_url:
@@ -93,19 +138,30 @@ def post_discord(summary: str, issue_url: str, state: dict) -> None:
         leader_name = leader[0]
         leader_checkpoint = leader[1].get("current_checkpoint", "")
 
-    # Discord embed description has a 4096 char limit; summary is ~400 chars
-    description = summary
+    summary_text = summary
     if issue_url:
-        description += f"\n\n[📋 Full standings & dog report]({issue_url})"
+        summary_text += f"\n\n[📋 Full report on GitHub]({issue_url})"
 
-    embed = {
+    embed_summary = {
         "title": f"🐕 Iditarod Update — {leader_name} leads at {leader_checkpoint}" if leader_name else "🐕 Iditarod Update",
-        "description": description,
-        "color": 0x1a6bbd,  # Iditarod blue-ish
+        "description": summary_text,
+        "color": 0x1a6bbd,
+    }
+
+    embed_standings = {
+        "title": "🏁 Current Standings",
+        "description": _build_standings_text(state),
+        "color": 0x1a6bbd,
+    }
+
+    embed_dogs = {
+        "title": "🐕 Dog Report",
+        "description": _build_dog_report_text(state),
+        "color": 0x1a6bbd,
         "footer": {"text": f"Log #{state['last_log']} · iditarod.com"},
     }
 
-    payload = {"embeds": [embed]}
+    payload = {"embeds": [embed_summary, embed_standings, embed_dogs]}
     resp = requests.post(webhook_url, json=payload, timeout=15)
     resp.raise_for_status()
     print("Discord notification sent.")
