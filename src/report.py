@@ -63,7 +63,7 @@ def format_report_markdown(report: dict, state: dict) -> str:
         if history:
             last = history[-1]
             out_dogs = str(last["out_dogs"]) if not data["at_checkpoint"] else str(last.get("in_dogs", ""))
-        lines.append(f"| {pos} | {name}{rookie_tag} | #{bib} | {checkpoint} | {at} | {out_dogs} |")
+        lines.append(f"| {pos} | {name}{rookie_tag} | Bib #{bib} | {checkpoint} | {at} | {out_dogs} |")
 
     lines.append("")
 
@@ -89,7 +89,7 @@ def format_report_markdown(report: dict, state: dict) -> str:
     else:
         for entry in report["dog_report"]:
             rookie_tag = " (r)" if entry.get("rookie") else ""
-            lines.append(f"**{entry['name']}**{rookie_tag} (#{entry['bib']}) — {entry['total_dropped']} dog(s) dropped total")
+            lines.append(f"**{entry['name']}**{rookie_tag} (Bib #{entry['bib']}) — {entry['total_dropped']} dog(s) dropped total")
             for drop in entry["drops"]:
                 lines.append(f"  - Dropped **{drop['dropped']}** at {drop['checkpoint']} "
                              f"(in: {drop['in_dogs']}, out: {drop['out_dogs']})")

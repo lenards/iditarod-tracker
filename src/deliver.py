@@ -86,7 +86,7 @@ def _build_standings_text(state: dict, max_mushers: int = 37) -> str:
         checkpoint = data["current_checkpoint"]
         status = "🛑" if data["at_checkpoint"] else "🏃"
         rookie = " (r)" if data.get("rookie") else ""
-        lines.append(f"`{pos:>2}.` {status} **{name}**{rookie} — {checkpoint}")
+        lines.append(f"`{pos:>2}.` {status} **{name}**{rookie} (Bib #{data['bib']}) — {checkpoint}")
 
     text = "\n".join(lines)
     # Discord field value limit is 1024 chars; truncate gracefully
@@ -107,7 +107,7 @@ def _build_dog_report_text(state: dict) -> str:
             total = sum(h["dropped"] for h in drops)
             detail = ", ".join(f"{h['dropped']} @ {h['checkpoint']}" for h in drops)
             rookie = " (r)" if data.get("rookie") else ""
-            lines.append(f"**{name}**{rookie} — {total} dropped ({detail})")
+            lines.append(f"**{name}**{rookie} (Bib #{data['bib']}) — {total} dropped ({detail})")
 
     if not lines:
         return "_No dogs dropped yet._"
