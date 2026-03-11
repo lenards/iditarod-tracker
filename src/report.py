@@ -28,11 +28,18 @@ def build_report(state: dict) -> dict:
             h for h in data.get("checkpoint_history", []) if h["dropped"] > 0
         ]
         if drops:
+            history = data.get("checkpoint_history", [])
+            if history:
+                last = history[-1]
+                cur_dogs = last["in_dogs"] if data.get("at_checkpoint") else last["out_dogs"]
+            else:
+                cur_dogs = None
             dog_report.append({
                 "name": name,
                 "bib": data["bib"],
                 "rookie": data["rookie"],
                 "total_dropped": total_dropped(data),
+                "current_dogs": cur_dogs,
                 "drops": drops,
             })
 
@@ -89,7 +96,9 @@ def format_report_markdown(report: dict, state: dict) -> str:
     else:
         for entry in report["dog_report"]:
             rookie_tag = " (r)" if entry.get("rookie") else ""
-            lines.append(f"**{entry['name']}**{rookie_tag} (Bib #{entry['bib']}) — {entry['total_dropped']} dog(s) dropped total")
+            cur = entry["current_dogs"]
+            dogs_str = f"{cur} dogs running - " if cur is not None else ""
+            lines.append(f"**{entry['name']}**{rookie_tag} (Bib #{entry['bib']}) — {dogs_str}{entry['total_dropped']} dropped")
             for drop in entry["drops"]:
                 lines.append(f"  - Dropped **{drop['dropped']}** at {drop['checkpoint']} "
                              f"(in: {drop['in_dogs']}, out: {drop['out_dogs']})")

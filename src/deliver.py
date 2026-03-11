@@ -107,7 +107,13 @@ def _build_dog_report_text(state: dict) -> str:
             total = sum(h["dropped"] for h in drops)
             detail = ", ".join(f"{h['dropped']} @ {h['checkpoint']}" for h in drops)
             rookie = " (r)" if data.get("rookie") else ""
-            lines.append(f"**{name}**{rookie} (Bib #{data['bib']}) — {total} dropped ({detail})")
+            history = data.get("checkpoint_history", [])
+            cur_dogs = None
+            if history:
+                last = history[-1]
+                cur_dogs = last["in_dogs"] if data.get("at_checkpoint") else last["out_dogs"]
+            dogs_str = f"{cur_dogs} dogs - " if cur_dogs is not None else ""
+            lines.append(f"**{name}**{rookie} (Bib #{data['bib']}) — {dogs_str}{total} dropped ({detail})")
 
     if not lines:
         return "_No dogs dropped yet._"
