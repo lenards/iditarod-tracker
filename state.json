@@ -1,5 +1,5 @@
 {
-  "last_log": 146,
+  "last_log": 150,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -46,7 +46,7 @@
     "Paige Drobny": {
       "bib": "10",
       "rookie": false,
-      "current_pos": 9,
+      "current_pos": 10,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -111,7 +111,7 @@
     "Travis Beals": {
       "bib": "4",
       "rookie": false,
-      "current_pos": 12,
+      "current_pos": 13,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -176,7 +176,7 @@
     "Bailey Vitello": {
       "bib": "9",
       "rookie": false,
-      "current_pos": 17,
+      "current_pos": 18,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -314,7 +314,7 @@
     "Joseph Sabin": {
       "bib": "11",
       "rookie": true,
-      "current_pos": 21,
+      "current_pos": 22,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -371,7 +371,7 @@
     "Chad Stoddard": {
       "bib": "8",
       "rookie": false,
-      "current_pos": 24,
+      "current_pos": 26,
       "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -428,7 +428,7 @@
     "Mille Porsild": {
       "bib": "15",
       "rookie": false,
-      "current_pos": 11,
+      "current_pos": 12,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -566,7 +566,7 @@
     "Gabe Dunham": {
       "bib": "18",
       "rookie": false,
-      "current_pos": 25,
+      "current_pos": 27,
       "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -623,7 +623,7 @@
     "Michelle Phillips": {
       "bib": "30",
       "rookie": false,
-      "current_pos": 13,
+      "current_pos": 14,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -761,7 +761,7 @@
     "Sam Martin": {
       "bib": "24",
       "rookie": true,
-      "current_pos": 20,
+      "current_pos": 21,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -883,9 +883,9 @@
     "Keaton Loebrich": {
       "bib": "12",
       "rookie": false,
-      "current_pos": 26,
-      "current_checkpoint": "McGrath",
-      "at_checkpoint": true,
+      "current_pos": 8,
+      "current_checkpoint": "Takotna",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -934,13 +934,21 @@
           "out_time": "3/11 00:59:00",
           "out_dogs": 14,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Takotna",
+          "in_time": "3/11 15:33:00",
+          "in_dogs": 14,
+          "out_time": "3/11 15:38:00",
+          "out_dogs": 14,
+          "dropped": 0
         }
       ]
     },
     "Kevin Hansen": {
       "bib": "34",
       "rookie": true,
-      "current_pos": 19,
+      "current_pos": 20,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1006,8 +1014,8 @@
       "bib": "27",
       "rookie": false,
       "current_pos": 6,
-      "current_checkpoint": "Takotna",
-      "at_checkpoint": false,
+      "current_checkpoint": "Ophir",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1078,7 +1086,7 @@
     "Peter Kaiser": {
       "bib": "33",
       "rookie": false,
-      "current_pos": 15,
+      "current_pos": 16,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1144,8 +1152,8 @@
       "bib": "29",
       "rookie": true,
       "current_pos": 7,
-      "current_checkpoint": "Takotna",
-      "at_checkpoint": false,
+      "current_checkpoint": "Ophir",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1273,8 +1281,8 @@
     "Brenda Mackey": {
       "bib": "36",
       "rookie": true,
-      "current_pos": 27,
-      "current_checkpoint": "McGrath",
+      "current_pos": 23,
+      "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -1330,7 +1338,7 @@
     "Wade Marrs": {
       "bib": "26",
       "rookie": false,
-      "current_pos": 16,
+      "current_pos": 17,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1395,9 +1403,9 @@
     "Sam Paperman": {
       "bib": "25",
       "rookie": true,
-      "current_pos": 32,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 31,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1452,9 +1460,9 @@
     "Sadie Lindquist": {
       "bib": "31",
       "rookie": true,
-      "current_pos": 31,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 33,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1509,7 +1517,7 @@
     "Jeff Deeter": {
       "bib": "35",
       "rookie": false,
-      "current_pos": 23,
+      "current_pos": 25,
       "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1567,8 +1575,8 @@
       "bib": "2",
       "rookie": true,
       "current_pos": 30,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1680,7 +1688,7 @@
     "Hanna Lyrek": {
       "bib": "23",
       "rookie": false,
-      "current_pos": 18,
+      "current_pos": 19,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1827,9 +1835,9 @@
     "Grayson Bruton": {
       "bib": "37",
       "rookie": false,
-      "current_pos": 33,
-      "current_checkpoint": "Nikolai",
-      "at_checkpoint": false,
+      "current_pos": 32,
+      "current_checkpoint": "McGrath",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1884,7 +1892,7 @@
     "Rohn Buser": {
       "bib": "3",
       "rookie": false,
-      "current_pos": 22,
+      "current_pos": 24,
       "current_checkpoint": "McGrath",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1941,7 +1949,7 @@
     "Ryan Redington": {
       "bib": "5",
       "rookie": false,
-      "current_pos": 10,
+      "current_pos": 11,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -2006,7 +2014,7 @@
     "Jessie Holmes": {
       "bib": "7",
       "rookie": false,
-      "current_pos": 8,
+      "current_pos": 9,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -2071,7 +2079,7 @@
     "Jessie Royer": {
       "bib": "14",
       "rookie": false,
-      "current_pos": 14,
+      "current_pos": 15,
       "current_checkpoint": "Takotna",
       "at_checkpoint": true,
       "checkpoint_history": [
