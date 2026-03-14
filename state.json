@@ -1,5 +1,5 @@
 {
-  "last_log": 304,
+  "last_log": 325,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -47,8 +47,8 @@
       "bib": "10",
       "rookie": false,
       "current_pos": 2,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -152,8 +152,8 @@
       "bib": "4",
       "rookie": false,
       "current_pos": 4,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -257,8 +257,8 @@
       "bib": "9",
       "rookie": false,
       "current_pos": 16,
-      "current_checkpoint": "Ruby",
-      "at_checkpoint": false,
+      "current_checkpoint": "Galena",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -353,9 +353,9 @@
     "Lauro Eklund": {
       "bib": "17",
       "rookie": false,
-      "current_pos": 13,
+      "current_pos": 12,
       "current_checkpoint": "Galena",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -444,6 +444,14 @@
           "out_time": "3/14 00:52:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Galena",
+          "in_time": "3/14 07:37:00",
+          "in_dogs": 15,
+          "out_time": "3/14 12:47:00",
+          "out_dogs": 14,
+          "dropped": 1
         }
       ]
     },
@@ -451,8 +459,8 @@
       "bib": "11",
       "rookie": true,
       "current_pos": 28,
-      "current_checkpoint": "Cripple",
-      "at_checkpoint": false,
+      "current_checkpoint": "Ruby",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -539,9 +547,9 @@
     "Chad Stoddard": {
       "bib": "8",
       "rookie": false,
-      "current_pos": 21,
+      "current_pos": 20,
       "current_checkpoint": "Ruby",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -622,6 +630,14 @@
           "out_time": "3/13 12:12:00",
           "out_dogs": 15,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 03:40:00",
+          "in_dogs": 15,
+          "out_time": "3/14 07:00:00",
+          "out_dogs": 15,
+          "dropped": 0
         }
       ]
     },
@@ -629,8 +645,8 @@
       "bib": "15",
       "rookie": false,
       "current_pos": 6,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -734,8 +750,8 @@
       "bib": "19",
       "rookie": false,
       "current_pos": 3,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -838,9 +854,9 @@
     "Gabe Dunham": {
       "bib": "18",
       "rookie": false,
-      "current_pos": 23,
+      "current_pos": 22,
       "current_checkpoint": "Ruby",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -921,6 +937,14 @@
           "out_time": "3/13 13:25:00",
           "out_dogs": 14,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 03:49:00",
+          "in_dogs": 14,
+          "out_time": "3/14 11:49:00",
+          "out_dogs": 13,
+          "dropped": 1
         }
       ]
     },
@@ -928,8 +952,8 @@
       "bib": "30",
       "rookie": false,
       "current_pos": 7,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1138,7 +1162,7 @@
       "bib": "24",
       "rookie": true,
       "current_pos": 17,
-      "current_checkpoint": "Ruby",
+      "current_checkpoint": "Galena",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -1218,6 +1242,14 @@
           "in_time": "3/13 03:07:00",
           "in_dogs": 13,
           "out_time": "3/13 09:10:00",
+          "out_dogs": 13,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 00:28:00",
+          "in_dogs": 13,
+          "out_time": "3/14 05:30:00",
           "out_dogs": 13,
           "dropped": 0
         }
@@ -1396,8 +1428,8 @@
     "Kevin Hansen": {
       "bib": "34",
       "rookie": true,
-      "current_pos": 18,
-      "current_checkpoint": "Ruby",
+      "current_pos": 19,
+      "current_checkpoint": "Galena",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -1479,6 +1511,14 @@
           "out_time": "3/13 09:42:00",
           "out_dogs": 12,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 00:36:00",
+          "in_dogs": 12,
+          "out_time": "3/14 05:42:00",
+          "out_dogs": 12,
+          "dropped": 0
         }
       ]
     },
@@ -1486,8 +1526,8 @@
       "bib": "27",
       "rookie": false,
       "current_pos": 14,
-      "current_checkpoint": "Ruby",
-      "at_checkpoint": false,
+      "current_checkpoint": "Galena",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1582,9 +1622,9 @@
     "Peter Kaiser": {
       "bib": "33",
       "rookie": false,
-      "current_pos": 9,
+      "current_pos": 10,
       "current_checkpoint": "Galena",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1673,13 +1713,21 @@
           "out_time": "3/13 19:47:00",
           "out_dogs": 11,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Galena",
+          "in_time": "3/14 02:46:00",
+          "in_dogs": 11,
+          "out_time": "3/14 11:02:00",
+          "out_dogs": 11,
+          "dropped": 0
         }
       ]
     },
     "Jesse Terry": {
       "bib": "29",
       "rookie": true,
-      "current_pos": 20,
+      "current_pos": 23,
       "current_checkpoint": "Ruby",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1857,9 +1905,9 @@
     "Brenda Mackey": {
       "bib": "36",
       "rookie": true,
-      "current_pos": 22,
+      "current_pos": 21,
       "current_checkpoint": "Ruby",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1932,6 +1980,14 @@
           "out_time": "3/13 13:50:00",
           "out_dogs": 14,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 03:41:00",
+          "in_dogs": 14,
+          "out_time": "3/14 11:41:00",
+          "out_dogs": 13,
+          "dropped": 1
         }
       ]
     },
@@ -1939,8 +1995,8 @@
       "bib": "26",
       "rookie": false,
       "current_pos": 5,
-      "current_checkpoint": "Galena",
-      "at_checkpoint": false,
+      "current_checkpoint": "Nulato",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2221,9 +2277,9 @@
     "Jeff Deeter": {
       "bib": "35",
       "rookie": false,
-      "current_pos": 10,
+      "current_pos": 11,
       "current_checkpoint": "Galena",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2310,6 +2366,14 @@
           "in_time": "3/13 14:30:00",
           "in_dogs": 15,
           "out_time": "3/13 19:45:00",
+          "out_dogs": 15,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Galena",
+          "in_time": "3/14 02:55:00",
+          "in_dogs": 15,
+          "out_time": "3/14 11:05:00",
           "out_dogs": 15,
           "dropped": 0
         }
@@ -2408,8 +2472,8 @@
       "bib": "20",
       "rookie": true,
       "current_pos": 26,
-      "current_checkpoint": "Cripple",
-      "at_checkpoint": false,
+      "current_checkpoint": "Ruby",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2497,8 +2561,8 @@
       "bib": "23",
       "rookie": false,
       "current_pos": 15,
-      "current_checkpoint": "Ruby",
-      "at_checkpoint": false,
+      "current_checkpoint": "Galena",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2594,8 +2658,8 @@
       "bib": "21",
       "rookie": true,
       "current_pos": 27,
-      "current_checkpoint": "Cripple",
-      "at_checkpoint": false,
+      "current_checkpoint": "Ruby",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2804,8 +2868,8 @@
     "Rohn Buser": {
       "bib": "3",
       "rookie": false,
-      "current_pos": 19,
-      "current_checkpoint": "Ruby",
+      "current_pos": 18,
+      "current_checkpoint": "Galena",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -2887,15 +2951,23 @@
           "out_time": "3/13 09:43:00",
           "out_dogs": 15,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Ruby",
+          "in_time": "3/14 00:42:00",
+          "in_dogs": 15,
+          "out_time": "3/14 05:52:00",
+          "out_dogs": 14,
+          "dropped": 1
         }
       ]
     },
     "Ryan Redington": {
       "bib": "5",
       "rookie": false,
-      "current_pos": 12,
+      "current_pos": 9,
       "current_checkpoint": "Galena",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2983,6 +3055,14 @@
           "in_dogs": 16,
           "out_time": "3/13 21:37:00",
           "out_dogs": 15,
+          "dropped": 1
+        },
+        {
+          "checkpoint": "Galena",
+          "in_time": "3/14 04:47:00",
+          "in_dogs": 15,
+          "out_time": "3/14 09:28:00",
+          "out_dogs": 14,
           "dropped": 1
         }
       ]
@@ -3103,7 +3183,7 @@
     "Jessie Royer": {
       "bib": "14",
       "rookie": false,
-      "current_pos": 11,
+      "current_pos": 13,
       "current_checkpoint": "Galena",
       "at_checkpoint": true,
       "checkpoint_history": [
