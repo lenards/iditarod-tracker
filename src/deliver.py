@@ -4,6 +4,8 @@ import os
 import requests
 from datetime import datetime, timezone
 
+from .report import is_expedition
+
 
 REPO = "lenards/iditarod-tracker"
 LABEL = "race-report"
@@ -61,8 +63,9 @@ def build_issue_title(state: dict) -> str:
     leader_checkpoint = ""
 
     mushers = state.get("mushers", {})
-    if mushers:
-        leader = min(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    competitive = {n: d for n, d in mushers.items() if not is_expedition(n)}
+    if competitive:
+        leader = min(competitive.items(), key=lambda x: x[1].get("current_pos", 999))
         leader_name = leader[0]
         leader_checkpoint = leader[1].get("current_checkpoint", "")
 
@@ -76,9 +79,12 @@ def build_full_body(summary: str, report_md: str) -> str:
 
 
 def _build_standings_text(state: dict, max_mushers: int = 37) -> str:
-    """Compact standings list for Discord (no markdown tables)."""
+    """Compact standings list for Discord (no markdown tables). Excludes expedition class."""
     mushers = state.get("mushers", {})
-    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    sorted_mushers = sorted(
+        ((n, d) for n, d in mushers.items() if not is_expedition(n)),
+        key=lambda x: x[1].get("current_pos", 999),
+    )
 
     lines = []
     for name, data in sorted_mushers[:max_mushers]:
@@ -89,16 +95,18 @@ def _build_standings_text(state: dict, max_mushers: int = 37) -> str:
         lines.append(f"`{pos:>2}.` {status} **{name}**{rookie} (Bib #{data['bib']}) — {checkpoint}")
 
     text = "\n".join(lines)
-    # Discord field value limit is 1024 chars; truncate gracefully
     if len(text) > 1020:
         text = text[:1020] + "\n…"
     return text or "_No standings available._"
 
 
 def _build_dog_report_text(state: dict) -> str:
-    """Compact dog drop summary for Discord."""
+    """Compact dog drop summary for Discord. Excludes expedition class."""
     mushers = state.get("mushers", {})
-    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    sorted_mushers = sorted(
+        ((n, d) for n, d in mushers.items() if not is_expedition(n)),
+        key=lambda x: x[1].get("current_pos", 999),
+    )
 
     lines = []
     for name, data in sorted_mushers:
@@ -125,9 +133,12 @@ def _build_dog_report_text(state: dict) -> str:
 
 
 def _build_resting_text(state: dict) -> str:
-    """Mushers currently resting at a checkpoint, sorted by position."""
+    """Competitive mushers currently resting at a checkpoint, sorted by position."""
     mushers = state.get("mushers", {})
-    sorted_mushers = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    sorted_mushers = sorted(
+        ((n, d) for n, d in mushers.items() if not is_expedition(n)),
+        key=lambda x: x[1].get("current_pos", 999),
+    )
 
     lines = []
     for name, data in sorted_mushers:
@@ -139,6 +150,28 @@ def _build_resting_text(state: dict) -> str:
 
     if not lines:
         return "_No mushers currently resting._"
+
+    text = "\n".join(lines)
+    if len(text) > 1020:
+        text = text[:1020] + "\n…"
+    return text
+
+
+def _build_expedition_text(state: dict) -> str:
+    """Expedition Class mushers — shown separately from competitive field."""
+    mushers = state.get("mushers", {})
+    expedition = sorted(
+        ((n, d) for n, d in mushers.items() if is_expedition(n)),
+        key=lambda x: x[1].get("current_pos", 999),
+    )
+    if not expedition:
+        return ""
+
+    lines = ["_Not competing for placement — traveling with support teams._\n"]
+    for name, data in expedition:
+        checkpoint = data["current_checkpoint"]
+        status = "🛑" if data["at_checkpoint"] else "🏃"
+        lines.append(f"{status} **{name}** (Bib #{data['bib']}) — {checkpoint}")
 
     text = "\n".join(lines)
     if len(text) > 1020:
@@ -161,8 +194,9 @@ def post_discord(summary: str, issue_url: str, state: dict) -> None:
     mushers = state.get("mushers", {})
     leader_name = ""
     leader_checkpoint = ""
-    if mushers:
-        leader = min(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    competitive = {n: d for n, d in mushers.items() if not is_expedition(n)}
+    if competitive:
+        leader = min(competitive.items(), key=lambda x: x[1].get("current_pos", 999))
         leader_name = leader[0]
         leader_checkpoint = leader[1].get("current_checkpoint", "")
 
@@ -192,10 +226,25 @@ def post_discord(summary: str, issue_url: str, state: dict) -> None:
         "title": "⛺ Resting at Checkpoint",
         "description": _build_resting_text(state),
         "color": 0x1a6bbd,
-        "footer": {"text": f"Log #{state['last_log']} · iditarod.com"},
     }
 
-    payload = {"embeds": [embed_summary, embed_standings, embed_resting, embed_dogs]}
+    embeds = [embed_summary, embed_standings, embed_resting, embed_dogs]
+
+    # Expedition class embed (only if any expedition mushers are in state)
+    expedition_text = _build_expedition_text(state)
+    if expedition_text:
+        embed_expedition = {
+            "title": "🧭 Expedition Class",
+            "description": expedition_text,
+            "color": 0x1a6bbd,
+            "footer": {"text": f"Log #{state['last_log']} · iditarod.com"},
+        }
+        embeds.append(embed_expedition)
+    else:
+        # Put footer on the last embed
+        embed_dogs["footer"] = {"text": f"Log #{state['last_log']} · iditarod.com"}
+
+    payload = {"embeds": embeds}
     resp = requests.post(webhook_url, json=payload, timeout=15)
     resp.raise_for_status()
     print("Discord notification sent.")

@@ -2,6 +2,19 @@
 
 from .state import total_dropped
 
+# Expedition Class mushers run alongside competitive mushers but are not
+# racing for a placement.  They skip mandatory rests, can rotate dogs, and
+# travel with a support team.  They should be reported separately.
+EXPEDITION_CLASS: set[str] = {
+    "Thomas Waerner",
+    "Kjell Rokke",
+    "Steve Curtis",
+}
+
+
+def is_expedition(name: str) -> bool:
+    return name in EXPEDITION_CLASS
+
 
 def build_report(state: dict) -> dict:
     """
@@ -14,14 +27,18 @@ def build_report(state: dict) -> dict:
     mushers = state["mushers"]
 
     # Sort by current position
-    standings = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    all_sorted = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+
+    # Separate competitive vs expedition class
+    standings = [(n, d) for n, d in all_sorted if not is_expedition(n)]
+    expedition = [(n, d) for n, d in all_sorted if is_expedition(n)]
 
     at_checkpoint = [
         (name, data) for name, data in standings
         if data.get("at_checkpoint")
     ]
 
-    # Dog report: only mushers who have dropped at least 1 dog total
+    # Dog report: only competitive mushers who have dropped at least 1 dog
     dog_report = []
     for name, data in standings:
         drops = [
@@ -47,6 +64,7 @@ def build_report(state: dict) -> dict:
         "standings": standings,
         "at_checkpoint": at_checkpoint,
         "dog_report": dog_report,
+        "expedition": expedition,
     }
 
 
@@ -104,6 +122,18 @@ def format_report_markdown(report: dict, state: dict) -> str:
                              f"(in: {drop['in_dogs']}, out: {drop['out_dogs']})")
             lines.append("")
 
+    # -- Expedition Class --
+    if report.get("expedition"):
+        lines.append("## 🧭 Expedition Class\n")
+        lines.append("_These mushers are not competing for placement. They travel with support "
+                      "teams, may rotate dogs, and are not subject to mandatory rest rules._\n")
+        for name, data in report["expedition"]:
+            checkpoint = data["current_checkpoint"]
+            rookie_tag = " (r)" if data.get("rookie") else ""
+            at = "resting" if data["at_checkpoint"] else "en route"
+            lines.append(f"- **{name}**{rookie_tag} (Bib #{data['bib']}) — {checkpoint} ({at})")
+        lines.append("")
+
     # -- Footer --
     lines.append(f"\n---\n_Data from log #{state['last_log']}. "
                  f"Standings reflect most recent log processed._")
@@ -135,9 +165,9 @@ def format_summary_prompt(report: dict, state: dict) -> str:
         for name, data in at_chk:
             parts.append(f"  - {name} at {data['current_checkpoint']}")
 
-    # Total field size
+    # Total field size (competitive only)
     total = len(standings)
-    parts.append(f"\nTOTAL ACTIVE MUSHERS: {total}")
+    parts.append(f"\nTOTAL ACTIVE COMPETITIVE MUSHERS: {total}")
 
     # Dog drops
     if dog_report:
@@ -150,5 +180,15 @@ def format_summary_prompt(report: dict, state: dict) -> str:
     if standings:
         leader_name, leader_data = standings[0]
         parts.append(f"\nRACE LEADER: {leader_name} at {leader_data['current_checkpoint']}")
+
+    # Expedition class — separate from competitive field
+    expedition = report.get("expedition", [])
+    if expedition:
+        parts.append("\nEXPEDITION CLASS (not competing for placement — they travel with support "
+                     "teams, may rotate dogs, and skip mandatory rests):")
+        for name, data in expedition:
+            chk = data["current_checkpoint"]
+            status = "resting" if data["at_checkpoint"] else "en route"
+            parts.append(f"  - {name} — {chk} ({status})")
 
     return "\n".join(parts)
