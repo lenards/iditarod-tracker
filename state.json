@@ -1,5 +1,5 @@
 {
-  "last_log": 553,
+  "last_log": 567,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -1545,8 +1545,8 @@
       "bib": "16",
       "rookie": false,
       "current_pos": 6,
-      "current_checkpoint": "White Mountain",
-      "at_checkpoint": true,
+      "current_checkpoint": "Nome",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2947,7 +2947,7 @@
       "bib": "26",
       "rookie": false,
       "current_pos": 5,
-      "current_checkpoint": "White Mountain",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
