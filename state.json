@@ -1,5 +1,5 @@
 {
-  "last_log": 524,
+  "last_log": 553,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -47,8 +47,8 @@
       "bib": "10",
       "rookie": false,
       "current_pos": 4,
-      "current_checkpoint": "White Mountain",
-      "at_checkpoint": true,
+      "current_checkpoint": "Nome",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -193,6 +193,14 @@
           "out_time": "3/17 05:03:00",
           "out_dogs": 10,
           "dropped": 0
+        },
+        {
+          "checkpoint": "White Mountain",
+          "in_time": "3/17 11:35:00",
+          "in_dogs": 10,
+          "out_time": "3/17 19:35:00",
+          "out_dogs": 10,
+          "dropped": 0
         }
       ]
     },
@@ -200,7 +208,7 @@
       "bib": "4",
       "rookie": false,
       "current_pos": 2,
-      "current_checkpoint": "White Mountain",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1086,8 +1094,8 @@
       "bib": "19",
       "rookie": false,
       "current_pos": 7,
-      "current_checkpoint": "Elim",
-      "at_checkpoint": false,
+      "current_checkpoint": "White Mountain",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2102,7 +2110,7 @@
       "rookie": true,
       "current_pos": 21,
       "current_checkpoint": "Koyuk",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2231,6 +2239,14 @@
           "out_time": "3/17 09:25:00",
           "out_dogs": 9,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Koyuk",
+          "in_time": "3/17 15:25:00",
+          "in_dogs": 9,
+          "out_time": "3/17 20:36:00",
+          "out_dogs": 8,
+          "dropped": 1
         }
       ]
     },
@@ -2801,9 +2817,9 @@
     "Brenda Mackey": {
       "bib": "36",
       "rookie": true,
-      "current_pos": 25,
-      "current_checkpoint": "Shaktoolik",
-      "at_checkpoint": false,
+      "current_pos": 24,
+      "current_checkpoint": "Koyuk",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2932,7 +2948,7 @@
       "rookie": false,
       "current_pos": 5,
       "current_checkpoint": "White Mountain",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -3077,6 +3093,14 @@
           "out_time": "3/17 03:50:00",
           "out_dogs": 9,
           "dropped": 1
+        },
+        {
+          "checkpoint": "White Mountain",
+          "in_time": "3/17 12:03:00",
+          "in_dogs": 9,
+          "out_time": "3/17 20:07:00",
+          "out_dogs": 6,
+          "dropped": 3
         }
       ]
     },
@@ -3350,7 +3374,7 @@
       "bib": "35",
       "rookie": false,
       "current_pos": 3,
-      "current_checkpoint": "White Mountain",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -3639,9 +3663,9 @@
     "Sydnie Bahl": {
       "bib": "20",
       "rookie": true,
-      "current_pos": 24,
-      "current_checkpoint": "Shaktoolik",
-      "at_checkpoint": false,
+      "current_pos": 25,
+      "current_checkpoint": "Koyuk",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -4214,7 +4238,7 @@
       "rookie": false,
       "current_pos": 20,
       "current_checkpoint": "Koyuk",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -4343,6 +4367,14 @@
           "out_time": "3/17 08:15:00",
           "out_dogs": 13,
           "dropped": 0
+        },
+        {
+          "checkpoint": "Koyuk",
+          "in_time": "3/17 13:14:00",
+          "in_dogs": 13,
+          "out_time": "3/17 20:23:00",
+          "out_dogs": 13,
+          "dropped": 0
         }
       ]
     },
@@ -4351,7 +4383,7 @@
       "rookie": false,
       "current_pos": 12,
       "current_checkpoint": "Elim",
-      "at_checkpoint": true,
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -4488,6 +4520,14 @@
           "out_time": "3/17 09:26:00",
           "out_dogs": 10,
           "dropped": 1
+        },
+        {
+          "checkpoint": "Elim",
+          "in_time": "3/17 15:35:00",
+          "in_dogs": 10,
+          "out_time": "3/17 19:52:00",
+          "out_dogs": 9,
+          "dropped": 1
         }
       ]
     },
@@ -4495,7 +4535,7 @@
       "bib": "7",
       "rookie": false,
       "current_pos": 1,
-      "current_checkpoint": "Safety",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4664,7 +4704,7 @@
       "bib": "14",
       "rookie": false,
       "current_pos": 13,
-      "current_checkpoint": "Koyuk",
+      "current_checkpoint": "Elim",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4800,6 +4840,14 @@
           "in_time": "3/17 04:00:00",
           "in_dogs": 12,
           "out_time": "3/17 09:20:00",
+          "out_dogs": 12,
+          "dropped": 0
+        },
+        {
+          "checkpoint": "Elim",
+          "in_time": "3/17 15:36:00",
+          "in_dogs": 12,
+          "out_time": "3/17 20:10:00",
           "out_dogs": 12,
           "dropped": 0
         }
