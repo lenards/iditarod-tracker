@@ -1,5 +1,5 @@
 {
-  "last_log": 600,
+  "last_log": 603,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -803,8 +803,8 @@
     "Chad Stoddard": {
       "bib": "8",
       "rookie": false,
-      "current_pos": 18,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 20,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1246,8 +1246,8 @@
     "Gabe Dunham": {
       "bib": "18",
       "rookie": false,
-      "current_pos": 19,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 18,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4236,8 +4236,8 @@
     "Rohn Buser": {
       "bib": "3",
       "rookie": false,
-      "current_pos": 20,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 19,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
