@@ -1,5 +1,5 @@
 {
-  "last_log": 579,
+  "last_log": 600,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -368,8 +368,8 @@
     "Bailey Vitello": {
       "bib": "9",
       "rookie": false,
-      "current_pos": 16,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 17,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1697,8 +1697,8 @@
     "Sam Martin": {
       "bib": "24",
       "rookie": true,
-      "current_pos": 14,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 15,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -2253,8 +2253,8 @@
     "Josi (Thyr) Shelley": {
       "bib": "27",
       "rookie": false,
-      "current_pos": 15,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 16,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -2551,8 +2551,8 @@
     "Jesse Terry": {
       "bib": "29",
       "rookie": true,
-      "current_pos": 17,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 14,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4381,8 +4381,8 @@
     "Ryan Redington": {
       "bib": "5",
       "rookie": false,
-      "current_pos": 12,
-      "current_checkpoint": "Elim",
+      "current_pos": 13,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4703,8 +4703,8 @@
     "Jessie Royer": {
       "bib": "14",
       "rookie": false,
-      "current_pos": 13,
-      "current_checkpoint": "Elim",
+      "current_pos": 12,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
