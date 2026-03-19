@@ -1,5 +1,5 @@
 {
-  "last_log": 567,
+  "last_log": 579,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -513,8 +513,8 @@
     "Lauro Eklund": {
       "bib": "17",
       "rookie": false,
-      "current_pos": 9,
-      "current_checkpoint": "Elim",
+      "current_pos": 8,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -1094,8 +1094,8 @@
       "bib": "19",
       "rookie": false,
       "current_pos": 7,
-      "current_checkpoint": "White Mountain",
-      "at_checkpoint": true,
+      "current_checkpoint": "Nome",
+      "at_checkpoint": false,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -1391,8 +1391,8 @@
     "Michelle Phillips": {
       "bib": "30",
       "rookie": false,
-      "current_pos": 8,
-      "current_checkpoint": "Elim",
+      "current_pos": 10,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -2398,8 +2398,8 @@
     "Peter Kaiser": {
       "bib": "33",
       "rookie": false,
-      "current_pos": 10,
-      "current_checkpoint": "Elim",
+      "current_pos": 9,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -3801,7 +3801,7 @@
       "bib": "23",
       "rookie": false,
       "current_pos": 11,
-      "current_checkpoint": "Elim",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
