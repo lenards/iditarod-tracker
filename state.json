@@ -1,5 +1,5 @@
 {
-  "last_log": 603,
+  "last_log": 605,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -202,7 +202,11 @@
           "out_dogs": 10,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 15h 38m 48s",
+      "avg_speed": "4.16"
     },
     "Travis Beals": {
       "bib": "4",
@@ -363,7 +367,11 @@
           "out_dogs": 11,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 11h 58m 26s",
+      "avg_speed": "4.23"
     },
     "Bailey Vitello": {
       "bib": "9",
@@ -508,7 +516,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 17h 13m 11s",
+      "avg_speed": "3.75"
     },
     "Lauro Eklund": {
       "bib": "17",
@@ -661,14 +673,18 @@
           "out_dogs": 13,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 3h 19m 49s",
+      "avg_speed": "3.96"
     },
     "Joseph Sabin": {
       "bib": "11",
       "rookie": true,
-      "current_pos": 26,
-      "current_checkpoint": "Shaktoolik",
-      "at_checkpoint": false,
+      "current_pos": 27,
+      "current_checkpoint": "White Mountain",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -798,7 +814,9 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Chad Stoddard": {
       "bib": "8",
@@ -943,12 +961,16 @@
           "out_dogs": 13,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 20h 42m 9s",
+      "avg_speed": "3.70"
     },
     "Mille Porsild": {
       "bib": "15",
       "rookie": false,
-      "current_pos": 8,
+      "current_pos": 0,
       "current_checkpoint": "Elim",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -1088,7 +1110,9 @@
           "out_dogs": 14,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "out_of_race",
+      "withdrawal_reason": "Scratched"
     },
     "Riley Dyche": {
       "bib": "19",
@@ -1241,7 +1265,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 1h 27m 30s",
+      "avg_speed": "3.99"
     },
     "Gabe Dunham": {
       "bib": "18",
@@ -1386,7 +1414,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 18h 25m 7s",
+      "avg_speed": "3.73"
     },
     "Michelle Phillips": {
       "bib": "30",
@@ -1539,7 +1571,11 @@
           "out_dogs": 10,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 3h 40m 40s",
+      "avg_speed": "3.96"
     },
     "Matt Hall": {
       "bib": "16",
@@ -1692,7 +1728,11 @@
           "out_dogs": 9,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 23h 27m 58s",
+      "avg_speed": "4.03"
     },
     "Sam Martin": {
       "bib": "24",
@@ -1837,13 +1877,17 @@
           "out_dogs": 11,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 16h 59m 16s",
+      "avg_speed": "3.75"
     },
     "Jason Mackey": {
       "bib": "22",
       "rookie": false,
-      "current_pos": 22,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 23,
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -1974,13 +2018,15 @@
           "out_dogs": 11,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Keaton Loebrich": {
       "bib": "12",
       "rookie": false,
-      "current_pos": 23,
-      "current_checkpoint": "Koyuk",
+      "current_pos": 22,
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -2103,14 +2149,16 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Kevin Hansen": {
       "bib": "34",
       "rookie": true,
       "current_pos": 21,
-      "current_checkpoint": "Koyuk",
-      "at_checkpoint": false,
+      "current_checkpoint": "White Mountain",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2248,7 +2296,9 @@
           "out_dogs": 8,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Josi (Thyr) Shelley": {
       "bib": "27",
@@ -2393,7 +2443,11 @@
           "out_dogs": 11,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 17h 0m 38s",
+      "avg_speed": "3.75"
     },
     "Peter Kaiser": {
       "bib": "33",
@@ -2546,7 +2600,11 @@
           "out_dogs": 8,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 3h 35m 32s",
+      "avg_speed": "3.96"
     },
     "Jesse Terry": {
       "bib": "29",
@@ -2691,14 +2749,18 @@
           "out_dogs": 13,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 13h 36m 3s",
+      "avg_speed": "3.80"
     },
     "Jody Potts-Joseph": {
       "bib": "32",
       "rookie": true,
-      "current_pos": 32,
-      "current_checkpoint": "Kaltag",
-      "at_checkpoint": false,
+      "current_pos": 0,
+      "current_checkpoint": "Unalakleet",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -2812,13 +2874,15 @@
           "out_dogs": 10,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "out_of_race",
+      "withdrawal_reason": "Scratched"
     },
     "Brenda Mackey": {
       "bib": "36",
       "rookie": true,
       "current_pos": 24,
-      "current_checkpoint": "Koyuk",
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -2941,7 +3005,9 @@
           "out_dogs": 11,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Wade Marrs": {
       "bib": "26",
@@ -3102,13 +3168,17 @@
           "out_dogs": 6,
           "dropped": 3
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 21h 2m 28s",
+      "avg_speed": "4.07"
     },
     "Sam Paperman": {
       "bib": "25",
       "rookie": true,
       "current_pos": 29,
-      "current_checkpoint": "Shaktoolik",
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -3231,14 +3301,16 @@
           "out_dogs": 12,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Sadie Lindquist": {
       "bib": "31",
       "rookie": true,
-      "current_pos": 27,
-      "current_checkpoint": "Shaktoolik",
-      "at_checkpoint": false,
+      "current_pos": 26,
+      "current_checkpoint": "White Mountain",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -3368,7 +3440,9 @@
           "out_dogs": 11,
           "dropped": 2
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Jeff Deeter": {
       "bib": "35",
@@ -3529,14 +3603,18 @@
           "out_dogs": 9,
           "dropped": 3
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 15h 10m 37s",
+      "avg_speed": "4.17"
     },
     "Adam Lindenmuth": {
       "bib": "2",
       "rookie": true,
-      "current_pos": 30,
-      "current_checkpoint": "Unalakleet",
-      "at_checkpoint": false,
+      "current_pos": 0,
+      "current_checkpoint": "White Mountain",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -3658,13 +3736,15 @@
           "out_dogs": 13,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "out_of_race",
+      "withdrawal_reason": "Scratched"
     },
     "Sydnie Bahl": {
       "bib": "20",
       "rookie": true,
       "current_pos": 25,
-      "current_checkpoint": "Koyuk",
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -3795,7 +3875,9 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Hanna Lyrek": {
       "bib": "23",
@@ -3948,13 +4030,17 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 5h 3m 55s",
+      "avg_speed": "3.93"
     },
     "Richie Beattie": {
       "bib": "21",
       "rookie": true,
       "current_pos": 28,
-      "current_checkpoint": "Shaktoolik",
+      "current_checkpoint": "White Mountain",
       "at_checkpoint": true,
       "checkpoint_history": [
         {
@@ -4077,14 +4163,16 @@
           "out_dogs": 8,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "racing",
+      "withdrawal_reason": ""
     },
     "Jaye Foucher": {
       "bib": "28",
       "rookie": true,
-      "current_pos": 36,
-      "current_checkpoint": "Finger Lake",
-      "at_checkpoint": false,
+      "current_pos": 0,
+      "current_checkpoint": "Rainy Pass",
+      "at_checkpoint": true,
       "checkpoint_history": [
         {
           "checkpoint": "Yentna",
@@ -4110,12 +4198,14 @@
           "out_dogs": 15,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "out_of_race",
+      "withdrawal_reason": "Scratched"
     },
     "Grayson Bruton": {
       "bib": "37",
       "rookie": false,
-      "current_pos": 31,
+      "current_pos": 0,
       "current_checkpoint": "Unalakleet",
       "at_checkpoint": true,
       "checkpoint_history": [
@@ -4231,7 +4321,9 @@
           "out_dogs": 10,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "out_of_race",
+      "withdrawal_reason": "Scratched"
     },
     "Rohn Buser": {
       "bib": "3",
@@ -4376,7 +4468,11 @@
           "out_dogs": 13,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 20h 33m 41s",
+      "avg_speed": "3.70"
     },
     "Ryan Redington": {
       "bib": "5",
@@ -4529,7 +4625,11 @@
           "out_dogs": 9,
           "dropped": 1
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 7h 2m 20s",
+      "avg_speed": "3.90"
     },
     "Jessie Holmes": {
       "bib": "7",
@@ -4698,7 +4798,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "9d 7h 32m 51s",
+      "avg_speed": "4.31"
     },
     "Jessie Royer": {
       "bib": "14",
@@ -4851,7 +4955,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "10d 6h 45m 15s",
+      "avg_speed": "3.91"
     },
     "Thomas Waerner": {
       "bib": "13",
@@ -4938,7 +5046,7 @@
       "bib": "6",
       "rookie": true,
       "current_pos": 1,
-      "current_checkpoint": "Ophir",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -5013,7 +5121,11 @@
           "out_dogs": 12,
           "dropped": 0
         }
-      ]
+      ],
+      "status": "expedition",
+      "withdrawal_reason": "",
+      "total_race_time": "7d 22h 40m 0s",
+      "avg_speed": "5.06"
     }
   }
 }
