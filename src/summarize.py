@@ -10,10 +10,16 @@ def generate_summary(facts: str) -> str:
     """
     client = anthropic.Anthropic()
 
-    prompt = f"""You are writing a race update for the Iditarod Trail Sled Dog Race 2026.
+    prompt = f"""You are writing a race update for the Iditarod Trail Sled Dog Race.
 Write a friendly, engaging 2-3 paragraph summary for a general audience (think: family following along from home).
-Mention the race leader and top positions, note who is resting at checkpoints, and call out any notable dog drops.
-Keep it warm and informative — not too technical. Don't use bullet points; write in prose.
+
+Key guidelines:
+- If mushers have FINISHED (reached Nome), celebrate them! Use a checkered flag emoji (🏁) for finishers.
+  Lead with who has finished and their finish position/time.
+- For mushers still RACING, mention the leader on the trail and top positions, who's resting, and notable dog drops.
+- If mushers are OUT OF RACE (scratched/withdrawn), mention them briefly with empathy — it's a tough race.
+  Don't dwell on it, but acknowledge their effort.
+- Keep it warm and informative — not too technical. Don't use bullet points; write in prose.
 
 IMPORTANT: If Expedition Class mushers appear in the facts, mention them briefly and separately
 from the competitive field. Make it clear they are not competing for placement — they run alongside

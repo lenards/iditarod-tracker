@@ -1,10 +1,14 @@
 """Builds the structured race report sections from state."""
 
+from __future__ import annotations
+
 from .state import total_dropped
 
 # Expedition Class mushers run alongside competitive mushers but are not
 # racing for a placement.  They skip mandatory rests, can rotate dogs, and
 # travel with a support team.  They should be reported separately.
+# This set is kept as a fallback for older state data that lacks a "status"
+# field; new logs populate status directly from the HTML section headings.
 EXPEDITION_CLASS: set[str] = {
     "Thomas Waerner",
     "Kjell Rokke",
@@ -12,35 +16,67 @@ EXPEDITION_CLASS: set[str] = {
 }
 
 
-def is_expedition(name: str) -> bool:
+def is_expedition(name: str, data: dict | None = None) -> bool:
+    """Check if a musher is Expedition Class, using status field if available."""
+    if data and data.get("status") == "expedition":
+        return True
     return name in EXPEDITION_CLASS
+
+
+def _musher_status(name: str, data: dict) -> str:
+    """Return the canonical status for a musher, with fallback for old state."""
+    status = data.get("status", "")
+    if status:
+        return status
+    # Fallback: infer from hardcoded set
+    if name in EXPEDITION_CLASS:
+        return "expedition"
+    return "racing"
 
 
 def build_report(state: dict) -> dict:
     """
     Returns a dict with:
-      - standings: list of mushers sorted by position
-      - at_checkpoint: mushers currently resting at a checkpoint
-      - dog_report: per-musher dropped dog history
-      - scratched: any scratched mushers (dogs = 0 or flagged)
+      - finished: mushers who reached Nome, sorted by finish position
+      - standings: racing mushers sorted by position
+      - at_checkpoint: racing mushers currently resting
+      - out_of_race: scratched/withdrawn mushers
+      - dog_report: per-musher dropped dog history (competitive only)
+      - expedition: Expedition Class mushers
     """
     mushers = state["mushers"]
 
-    # Sort by current position
-    all_sorted = sorted(mushers.items(), key=lambda x: x[1].get("current_pos", 999))
+    # Categorize each musher
+    finished = []
+    racing = []
+    out_of_race = []
+    expedition = []
 
-    # Separate competitive vs expedition class
-    standings = [(n, d) for n, d in all_sorted if not is_expedition(n)]
-    expedition = [(n, d) for n, d in all_sorted if is_expedition(n)]
+    for name, data in mushers.items():
+        status = _musher_status(name, data)
+        if status == "finished":
+            finished.append((name, data))
+        elif status == "out_of_race":
+            out_of_race.append((name, data))
+        elif status == "expedition":
+            expedition.append((name, data))
+        else:
+            racing.append((name, data))
+
+    # Sort each group
+    finished.sort(key=lambda x: x[1].get("current_pos", 999))
+    racing.sort(key=lambda x: x[1].get("current_pos", 999))
+    out_of_race.sort(key=lambda x: x[1].get("current_pos", 999))
+    expedition.sort(key=lambda x: x[1].get("current_pos", 999))
 
     at_checkpoint = [
-        (name, data) for name, data in standings
+        (name, data) for name, data in racing
         if data.get("at_checkpoint")
     ]
 
-    # Dog report: only competitive mushers who have dropped at least 1 dog
+    # Dog report: only competitive mushers (racing + finished) who dropped dogs
     dog_report = []
-    for name, data in standings:
+    for name, data in finished + racing:
         drops = [
             h for h in data.get("checkpoint_history", []) if h["dropped"] > 0
         ]
@@ -61,8 +97,10 @@ def build_report(state: dict) -> dict:
             })
 
     return {
-        "standings": standings,
+        "finished": finished,
+        "standings": racing,
         "at_checkpoint": at_checkpoint,
+        "out_of_race": out_of_race,
         "dog_report": dog_report,
         "expedition": expedition,
     }
@@ -72,36 +110,62 @@ def format_report_markdown(report: dict, state: dict) -> str:
     """Formats the report as a markdown string for GitHub issue body."""
     lines = []
 
-    # -- Standings --
-    lines.append("## 🏁 Current Standings\n")
-    lines.append("| Pos | Musher | Bib | Checkpoint | Status | Dogs Out |")
-    lines.append("|-----|--------|-----|------------|--------|----------|")
+    # -- Finished --
+    if report["finished"]:
+        lines.append("## 🏁 Finished\n")
+        lines.append("| Pos | Musher | Bib | Race Time | Avg Speed | Dogs In |")
+        lines.append("|-----|--------|-----|-----------|-----------|---------|")
+        for name, data in report["finished"]:
+            pos = data["current_pos"]
+            bib = data["bib"]
+            rookie_tag = " (r)" if data.get("rookie") else ""
+            race_time = data.get("total_race_time", "")
+            avg_speed = data.get("avg_speed", "")
+            in_dogs = ""
+            history = data.get("checkpoint_history", [])
+            if history:
+                in_dogs = str(history[-1].get("in_dogs", ""))
+            elif data.get("in_dogs") is not None:
+                in_dogs = ""
+            lines.append(f"| {pos} | 🏁 {name}{rookie_tag} | Bib #{bib} | {race_time} | {avg_speed} | {in_dogs} |")
+        lines.append("")
 
-    for name, data in report["standings"]:
-        pos = data["current_pos"]
-        bib = data["bib"]
-        checkpoint = data["current_checkpoint"]
-        rookie_tag = " (r)" if data.get("rookie") else ""
-        at = "🛑 resting" if data["at_checkpoint"] else "🏃 en route"
-        out_dogs = ""
-        history = data.get("checkpoint_history", [])
-        if history:
-            last = history[-1]
-            out_dogs = str(last["out_dogs"]) if not data["at_checkpoint"] else str(last.get("in_dogs", ""))
-        lines.append(f"| {pos} | {name}{rookie_tag} | Bib #{bib} | {checkpoint} | {at} | {out_dogs} |")
+    # -- Racing Standings --
+    if report["standings"]:
+        lines.append("## 🏃 Racing\n")
+        lines.append("| Pos | Musher | Bib | Checkpoint | Status | Dogs Out |")
+        lines.append("|-----|--------|-----|------------|--------|----------|")
 
-    lines.append("")
+        for name, data in report["standings"]:
+            pos = data["current_pos"]
+            bib = data["bib"]
+            checkpoint = data["current_checkpoint"]
+            rookie_tag = " (r)" if data.get("rookie") else ""
+            at = "🛑 resting" if data["at_checkpoint"] else "🏃 en route"
+            out_dogs = ""
+            history = data.get("checkpoint_history", [])
+            if history:
+                last = history[-1]
+                out_dogs = str(last["out_dogs"]) if not data["at_checkpoint"] else str(last.get("in_dogs", ""))
+            lines.append(f"| {pos} | {name}{rookie_tag} | Bib #{bib} | {checkpoint} | {at} | {out_dogs} |")
+
+        lines.append("")
+
+    # -- Out of Race --
+    if report["out_of_race"]:
+        lines.append("## ❌ Out of Race\n")
+        for name, data in report["out_of_race"]:
+            rookie_tag = " (r)" if data.get("rookie") else ""
+            checkpoint = data["current_checkpoint"]
+            reason = data.get("withdrawal_reason", "Scratched")
+            lines.append(f"- **{name}**{rookie_tag} (Bib #{data['bib']}) — {reason} at **{checkpoint}**")
+        lines.append("")
 
     # -- At Checkpoint --
     if report["at_checkpoint"]:
         lines.append("## ⛺ Currently at Checkpoint\n")
         for name, data in report["at_checkpoint"]:
             checkpoint = data["current_checkpoint"]
-            history = data.get("checkpoint_history", [])
-            # Find the in_dogs for the current checkpoint
-            in_dogs = "?"
-            # Last history entry might be the previous checkpoint; current checkpoint in-progress
-            # We stored this in current state from the log
             rookie_tag = " (r)" if data.get("rookie") else ""
             lines.append(f"- **{name}**{rookie_tag} (Bib #{data['bib']}) — resting at **{checkpoint}**")
         lines.append("")
@@ -130,7 +194,12 @@ def format_report_markdown(report: dict, state: dict) -> str:
         for name, data in report["expedition"]:
             checkpoint = data["current_checkpoint"]
             rookie_tag = " (r)" if data.get("rookie") else ""
-            at = "resting" if data["at_checkpoint"] else "en route"
+            if checkpoint.lower() == "nome":
+                at = "finished"
+            elif data["at_checkpoint"]:
+                at = "resting"
+            else:
+                at = "en route"
             lines.append(f"- **{name}**{rookie_tag} (Bib #{data['bib']}) — {checkpoint} ({at})")
         lines.append("")
 
@@ -144,20 +213,33 @@ def format_report_markdown(report: dict, state: dict) -> str:
 def format_summary_prompt(report: dict, state: dict) -> str:
     """
     Builds the text prompt for Claude to write a narrative summary.
-    Includes key facts about standings, who's resting, and dog drops.
+    Includes key facts about standings, who's resting, finished, out of race, and dog drops.
     """
+    finished = report["finished"]
     standings = report["standings"]
     at_chk = report["at_checkpoint"]
+    out_of_race = report["out_of_race"]
     dog_report = report["dog_report"]
 
     parts = []
 
-    # Top 5
-    parts.append("TOP 5 STANDINGS:")
-    for name, data in standings[:5]:
-        chk = data["current_checkpoint"]
-        status = "resting" if data["at_checkpoint"] else "en route"
-        parts.append(f"  {data['current_pos']}. {name} — {chk} ({status})")
+    # Finished mushers
+    if finished:
+        parts.append(f"MUSHERS WHO HAVE FINISHED ({len(finished)}):")
+        for name, data in finished:
+            race_time = data.get("total_race_time", "")
+            time_str = f" in {race_time}" if race_time else ""
+            parts.append(f"  {data['current_pos']}. {name}{time_str}")
+        parts.append("")
+
+    # Top 5 still racing
+    if standings:
+        top_n = min(5, len(standings))
+        parts.append(f"TOP {top_n} RACING:")
+        for name, data in standings[:top_n]:
+            chk = data["current_checkpoint"]
+            status = "resting" if data["at_checkpoint"] else "en route"
+            parts.append(f"  {data['current_pos']}. {name} — {chk} ({status})")
 
     # Who's resting
     if at_chk:
@@ -165,9 +247,16 @@ def format_summary_prompt(report: dict, state: dict) -> str:
         for name, data in at_chk:
             parts.append(f"  - {name} at {data['current_checkpoint']}")
 
-    # Total field size (competitive only)
-    total = len(standings)
-    parts.append(f"\nTOTAL ACTIVE COMPETITIVE MUSHERS: {total}")
+    # Out of Race
+    if out_of_race:
+        parts.append(f"\nOUT OF RACE ({len(out_of_race)}):")
+        for name, data in out_of_race:
+            reason = data.get("withdrawal_reason", "Scratched")
+            parts.append(f"  - {name} — {reason} at {data['current_checkpoint']}")
+
+    # Total field size
+    total_competitive = len(finished) + len(standings)
+    parts.append(f"\nTOTAL COMPETITIVE MUSHERS: {total_competitive} ({len(finished)} finished, {len(standings)} racing, {len(out_of_race)} out of race)")
 
     # Dog drops
     if dog_report:
@@ -176,10 +265,10 @@ def format_summary_prompt(report: dict, state: dict) -> str:
             for drop in entry["drops"]:
                 parts.append(f"  - {entry['name']} dropped {drop['dropped']} dog(s) at {drop['checkpoint']}")
 
-    # Last checkpoint reached by leader
+    # Race leader (first racer still on trail)
     if standings:
         leader_name, leader_data = standings[0]
-        parts.append(f"\nRACE LEADER: {leader_name} at {leader_data['current_checkpoint']}")
+        parts.append(f"\nRACE LEADER (on trail): {leader_name} at {leader_data['current_checkpoint']}")
 
     # Expedition class — separate from competitive field
     expedition = report.get("expedition", [])
@@ -188,7 +277,12 @@ def format_summary_prompt(report: dict, state: dict) -> str:
                      "teams, may rotate dogs, and skip mandatory rests):")
         for name, data in expedition:
             chk = data["current_checkpoint"]
-            status = "resting" if data["at_checkpoint"] else "en route"
+            if chk.lower() == "nome":
+                status = "finished"
+            elif data["at_checkpoint"]:
+                status = "resting"
+            else:
+                status = "en route"
             parts.append(f"  - {name} — {chk} ({status})")
 
     return "\n".join(parts)

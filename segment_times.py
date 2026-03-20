@@ -35,6 +35,7 @@ CHECKPOINT_MILES = {
     "Safety": 953, "Nome": 975,
 }
 
+# Fallback set for Expedition Class — prefer status field from state when available
 EXPEDITION_CLASS = {"Thomas Waerner", "Kjell Rokke", "Steve Curtis"}
 
 YEAR = 2026

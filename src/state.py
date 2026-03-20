@@ -16,6 +16,10 @@ DEFAULT_STATE = {
     #   "current_pos": int,
     #   "current_checkpoint": str,
     #   "at_checkpoint": bool,
+    #   "status": str,               # "finished"|"racing"|"out_of_race"|"expedition"
+    #   "withdrawal_reason": str,     # "Scratched"|"Withdrawn"|"" etc.
+    #   "total_race_time": str,       # only for finished mushers
+    #   "avg_speed": str,             # only for finished mushers
     #   "checkpoint_history": [
     #     {
     #       "checkpoint": str,
@@ -62,6 +66,10 @@ def update_from_log(state: dict, log_data: dict) -> None:
                 "current_pos": m["pos"],
                 "current_checkpoint": m["checkpoint"],
                 "at_checkpoint": m["at_checkpoint"],
+                "status": m.get("status", "racing"),
+                "withdrawal_reason": m.get("withdrawal_reason", ""),
+                "total_race_time": m.get("total_race_time", ""),
+                "avg_speed": m.get("avg_speed", ""),
                 "checkpoint_history": [],
             }
 
@@ -71,6 +79,12 @@ def update_from_log(state: dict, log_data: dict) -> None:
         entry["current_pos"] = m["pos"]
         entry["current_checkpoint"] = m["checkpoint"]
         entry["at_checkpoint"] = m["at_checkpoint"]
+        entry["status"] = m.get("status", entry.get("status", "racing"))
+        entry["withdrawal_reason"] = m.get("withdrawal_reason", entry.get("withdrawal_reason", ""))
+        if m.get("total_race_time"):
+            entry["total_race_time"] = m["total_race_time"]
+        if m.get("avg_speed"):
+            entry["avg_speed"] = m["avg_speed"]
 
         # Record checkpoint passage if we have complete in+out data
         # and haven't recorded this checkpoint yet (or data changed)
