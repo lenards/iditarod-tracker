@@ -1,5 +1,5 @@
 {
-  "last_log": 612,
+  "last_log": 613,
   "last_report_log": 0,
   "mushers": {
     "Steve Curtis": {
@@ -1904,8 +1904,8 @@
     "Jason Mackey": {
       "bib": "22",
       "rookie": false,
-      "current_pos": 26,
-      "current_checkpoint": "Safety",
+      "current_pos": 28,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -2053,14 +2053,16 @@
           "dropped": 0
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 5h 45m 8s",
+      "avg_speed": "3.28"
     },
     "Keaton Loebrich": {
       "bib": "12",
       "rookie": false,
       "current_pos": 27,
-      "current_checkpoint": "Safety",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -2200,8 +2202,10 @@
           "dropped": 1
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 5h 21m 12s",
+      "avg_speed": "3.29"
     },
     "Kevin Hansen": {
       "bib": "34",
@@ -2949,8 +2953,8 @@
     "Brenda Mackey": {
       "bib": "36",
       "rookie": true,
-      "current_pos": 28,
-      "current_checkpoint": "Safety",
+      "current_pos": 26,
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -3090,8 +3094,10 @@
           "dropped": 0
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 5h 1m 23s",
+      "avg_speed": "3.29"
     },
     "Wade Marrs": {
       "bib": "26",
@@ -3262,7 +3268,7 @@
       "bib": "25",
       "rookie": true,
       "current_pos": 24,
-      "current_checkpoint": "Safety",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -3402,8 +3408,10 @@
           "dropped": 0
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 4h 41m 32s",
+      "avg_speed": "3.29"
     },
     "Sadie Lindquist": {
       "bib": "31",
@@ -3862,7 +3870,7 @@
       "bib": "20",
       "rookie": true,
       "current_pos": 25,
-      "current_checkpoint": "Safety",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4010,8 +4018,10 @@
           "dropped": 0
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 4h 56m 32s",
+      "avg_speed": "3.29"
     },
     "Hanna Lyrek": {
       "bib": "23",
@@ -4174,7 +4184,7 @@
       "bib": "21",
       "rookie": true,
       "current_pos": 29,
-      "current_checkpoint": "Safety",
+      "current_checkpoint": "Nome",
       "at_checkpoint": false,
       "checkpoint_history": [
         {
@@ -4314,8 +4324,10 @@
           "dropped": 0
         }
       ],
-      "status": "racing",
-      "withdrawal_reason": ""
+      "status": "finished",
+      "withdrawal_reason": "",
+      "total_race_time": "12d 5h 49m 46s",
+      "avg_speed": "3.28"
     },
     "Jaye Foucher": {
       "bib": "28",
